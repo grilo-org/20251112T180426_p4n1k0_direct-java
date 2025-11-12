@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '8080:8080'
+    container_name: projeto-backend
+  frontend:
+    build:
+      context: ./frontend/transfer-ui
+      dockerfile: Dockerfile
+    ports:
+      - '5173:80'
+    container_name: projeto-frontend
+    depends_on:
+      - backend
